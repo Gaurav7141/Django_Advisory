@@ -1,0 +1,110 @@
+<!-- myapp/templates/base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}ESDL{% endblock %}</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        {% load static %}
+        <link rel="shortcut icon" type="image/x-icon" href="{% static 'myapp/esdl.ico' %}">
+    
+    {% load static %}
+    <style>
+        body {
+            display: flex;
+            min-height: 100vh;
+            justify-content: absolute;
+            align-items: absolute;
+            margin: 0;
+        }
+
+        .container {
+            width: 100%;
+            text-align: absolute;
+        }
+
+        .logout-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .logout-btn {
+            color: white; /* Set the color to white */
+        }
+
+        .menu-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            cursor: pointer;
+            color: white;
+        }
+
+        .menu-icon {
+            font-size: 40px;
+            line-height: 30px;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 50px; /* Adjust the top position as needed */
+            left: 20px;
+            display: none;
+        }
+
+        .dropdown-menu.show {
+            display: block;
+        }
+
+        .dropdown-item {
+            padding: 0.5rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hamburger menu icon with custom dropdown -->
+    <div class="menu-button" id="myAppDropdown">
+        <div class="menu-icon">&#9776;</div>
+        <div class="dropdown-menu" id="myAppOptions">
+            <a class="dropdown-item" href="{% url 'submit_form' %}">Submit Form</a>
+            <a class="dropdown-item" href="{% url 'search_credentials' %}">Search Credentials</a>
+            <a class="dropdown-item" href="{% url 'add_credentials' %}">Add Credentials</a>
+        </div>
+    </div>
+
+    <div class="container mt-">
+        <div class="logout-container">
+            {% if user.is_authenticated %}
+                <a href="{% url 'logout' %}" class="btn btn-outline-light logout-btn">Logout</a>
+            {% endif %}
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.5.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        $(document).ready(function () {
+            $('.menu-button').on('click', function () {
+                $('#myAppOptions').toggleClass('show');
+            });
+
+            // Close the dropdown when clicking outside of it
+            $(document).on('click', function (e) {
+                if (!$(e.target).closest('.menu-button').length && !$(e.target).closest('.dropdown-menu').length) {
+                    $('#myAppOptions').removeClass('show');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,3 @@
+advisory_type: V
+advisory_name: Storm-0569, Storm-1113, Sangria Tempest, and Storm-1674 APT
+ioc_file: Storm-0569, Storm-1113, Sangria Tempest, and Storm-1674 APT.htm

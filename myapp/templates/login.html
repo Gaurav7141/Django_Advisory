@@ -1,0 +1,77 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'myapp/esdl.ico' %}">
+    <style>
+        body {
+            display: flex;
+            min-height: 100vh;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            background-image: url('{% static "myapp/Picture1.jpg" %}');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        form {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.235);
+            padding: 30px;
+            border-radius: 20px;
+            color: white; /* Set text color to white */
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold; /* Make label text bold */
+            color: white; /* Set text color to white */
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+        }
+
+        /* Add margin to the input field */
+        input[type="text"],
+        input[type="password"] {
+            margin-bottom: 15px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 15px;
+            border: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        <h2 style="color: white;">Login</h2>
+        <label for="username"><strong>Username:</strong></label>
+        <input type="text" name="username" required>
+        <br>
+        <label for="password"><strong>Password:</strong></label>
+        <input type="password" name="password" required>
+        <br>
+        <button type="submit">Login</button>
+    </form>
+</body>
+</html>

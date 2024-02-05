@@ -1,0 +1,19 @@
+<!-- success_template.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Success Page</title>
+</head>
+<body>
+    <h1>Success!</h1>
+    <p>File Path: {{ file_path }}</p>
+    
+    <h2>Script Outputs:</h2>
+    <ul>
+        {% for key, value in captured_output.items %}
+            <li><strong>{{ key }}:</strong> {{ value }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+s

@@ -1,0 +1,30 @@
+/* static/your_app/styles.css */
+.input-box {
+    width: 150%; /* Adjust the width as needed */
+    padding: 10px; /* Adjust the padding as needed */
+    font-size: 15px; /* Adjust the font size as needed */
+}
+
+body {
+    /* Use linear gradient for a mixture of colors */
+    background: linear-gradient(45deg, #0ec9d6, #7f2cd7, #ec1b6f);
+    background-size: 400% 400%; /* Adjust as needed */
+
+    /* Animation for a color transition effect */
+    animation: gradientAnimation 15s infinite;
+}
+
+/* Keyframes for the animation */
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+/* myapp/static/myapp/styles.css */
+
